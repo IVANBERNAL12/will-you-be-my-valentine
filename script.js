@@ -51,7 +51,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const secs = Math.floor((diff / 1000) % 60);
 
         countdownEl.textContent =
-            `⏰ Valentine's Day Countdown (PH Time): ${days}d ${hours}h ${mins}m ${secs}s 💕`;
+            `⏰ Valentine's Day Countdown: ${days}d ${hours}h ${mins}m ${secs}s 💕`;
     }
 
     setInterval(updateCountdown, 1000);
