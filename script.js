@@ -58,11 +58,11 @@ document.addEventListener("DOMContentLoaded", () => {
     updateCountdown();
 
     /* SLIDESHOW */
- const images = [
-    "assets/images/us1.jpg",
-    "assets/images/us2.jpg",
-    "assets/images/us3.jpg"
-];
+    const images = [
+        "assets/images/us1.jpg",
+        "assets/images/us2.jpg",
+        "assets/images/us3.jpg"
+    ];
 
     let currentSlide = 0;
     const slideImage = document.getElementById("slideImage");
@@ -76,13 +76,23 @@ document.addEventListener("DOMContentLoaded", () => {
         }, 300);
     }, 3000);
 
-    /* AUDIO - Play on first interaction */
+    /* AUDIO - Play on first interaction (MOBILE FRIENDLY) */
     const bgMusic = document.getElementById("bgMusic");
     bgMusic.volume = 0.1;
     
-    document.body.addEventListener('click', () => {
-        bgMusic.play().catch(err => console.log("Audio play prevented"));
-    }, { once: true });
+    let musicStarted = false;
+
+    function startMusic() {
+        if (!musicStarted) {
+            bgMusic.play().catch(err => console.log("Audio play prevented"));
+            musicStarted = true;
+        }
+    }
+
+    // Try to start music on ANY user interaction (mobile and desktop)
+    document.body.addEventListener('click', startMusic);
+    document.body.addEventListener('touchstart', startMusic);
+    openBtn.addEventListener('click', startMusic);
 
     /* OPEN BUTTON */
     openBtn.addEventListener("click", () => {
@@ -93,6 +103,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     /* YES BUTTON - Transport to new page */
     yesBtn.addEventListener("click", () => {
+        startMusic(); // Ensure music plays
         launchBigFireworks();
         
         // Confetti rain
@@ -109,99 +120,99 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     /* NO BUTTON - Enhanced interactions with cat memes */
-const catMemeGifs = [
-    "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExbnJoYnNqdTR3MXd0eGltOHhjOHNjY3R6Z2RiczJmMjJkeGdpYTBjNSZlcD12MV9naWZzX3NlYXJjaCZjdD1n/fFa05KbZowXiEIyRse/giphy.gif", // Sad cat
-    "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExbnJoYnNqdTR3MXd0eGltOHhjOHNjY3R6Z2RiczJmMjJkeGdpYTBjNSZlcD12MV9naWZzX3NlYXJjaCZjdD1n/7AzEXdIb1wyCTWJntb/giphy.gif", // Crying cat
-    "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExbnJoYnNqdTR3MXd0eGltOHhjOHNjY3R6Z2RiczJmMjJkeGdpYTBjNSZlcD12MV9naWZzX3NlYXJjaCZjdD1n/TZBED1pP5m8N2/giphy.gif", // Dramatic cat
-    "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExbnJoYnNqdTR3MXd0eGltOHhjOHNjY3R6Z2RiczJmMjJkeGdpYTBjNSZlcD12MV9naWZzX3NlYXJjaCZjdD1n/ruyS8Zw9sBqE5UjOnY/giphy.gif", // Sad kitty
-    "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExbnJoYnNqdTR3MXd0eGltOHhjOHNjY3R6Z2RiczJmMjJkeGdpYTBjNSZlcD12MV9naWZzX3NlYXJjaCZjdD1n/mi4ec226vjAkehSLk0/giphy.gif", // Pleading cat
-    "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExZHQweDU5ZjZseGljYzJpd3h6Z2thMjgxZTBmenUxdjJsem83cXU1cSZlcD12MV9naWZzX3NlYXJjaCZjdD1n/901mxGLGQN2PyCQpoc/giphy.gif", // Heartbroken cat
-    
-];
+    const catMemeGifs = [
+        "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExbnJoYnNqdTR3MXd0eGltOHhjOHNjY3R6Z2RiczJmMjJkeGdpYTBjNSZlcD12MV9naWZzX3NlYXJjaCZjdD1n/fFa05KbZowXiEIyRse/giphy.gif", // Sad cat
+        "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExbnJoYnNqdTR3MXd0eGltOHhjOHNjY3R6Z2RiczJmMjJkeGdpYTBjNSZlcD12MV9naWZzX3NlYXJjaCZjdD1n/7AzEXdIb1wyCTWJntb/giphy.gif", // Crying cat
+        "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExbnJoYnNqdTR3MXd0eGltOHhjOHNjY3R6Z2RiczJmMjJkeGdpYTBjNSZlcD12MV9naWZzX3NlYXJjaCZjdD1n/TZBED1pP5m8N2/giphy.gif", // Dramatic cat
+        "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExbnJoYnNqdTR3MXd0eGltOHhjOHNjY3R6Z2RiczJmMjJkeGdpYTBjNSZlcD12MV9naWZzX3NlYXJjaCZjdD1n/ruyS8Zw9sBqE5UjOnY/giphy.gif", // Sad kitty
+        "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExbnJoYnNqdTR3MXd0eGltOHhjOHNjY3R6Z2RiczJmMjJkeGdpYTBjNSZlcD12MV9naWZzX3NlYXJjaCZjdD1n/mi4ec226vjAkehSLk0/giphy.gif", // Pleading cat
+        "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExZHQweDU5ZjZseGljYzJpd3h6Z2thMjgxZTBmenUxdjJsem83cXU1cSZlcD12MV9naWZzX3NlYXJjaCZjdD1n/901mxGLGQN2PyCQpoc/giphy.gif", // Heartbroken cat
+    ];
 
-const pleadingMessages = [
-    "Pleeease? 🥺",
-    "Are you sure? I'll be so sad! 😿",
-    "But... but... I love you! 💔",
-    "You're breaking my heart! 😭",
-    "Just one chance? Pretty please? 🙏",
-    "I'll do anything! Don't say no! 😢",
-    "My heart can't take this! 💔💔",
-    "You're killing me! Please say yes! 😭",
-    "I'm begging you! 🙏🙏🙏",
-    "NOOOOO! Change your mind! 🥺😿"
-];
+    const pleadingMessages = [
+        "Pleeease? 🥺",
+        "Are you sure? I'll be so sad! 😿",
+        "But... but... I love you! 💔",
+        "You're breaking my heart! 😭",
+        "Just one chance? Pretty please? 🙏",
+        "I'll do anything! Don't say no! 😢",
+        "My heart can't take this! 💔💔",
+        "You're killing me! Please say yes! 😭",
+        "I'm begging you! 🙏🙏🙏",
+        "NOOOOO! Change your mind! 🥺😿"
+    ];
 
-let noClicks = 0;
+    let noClicks = 0;
 
-noBtn.addEventListener("click", () => {
-    noClicks++;
-    
-    // Show sad cat gif
-    sadGif.classList.remove("hidden");
-    sadGif.src = catMemeGifs[noClicks % catMemeGifs.length];
-
-    // Show pleading text
-    if (noClicks <= pleadingMessages.length) {
-        pleadingText.textContent = pleadingMessages[noClicks - 1];
-    }
-
-    // Shrink NO button more aggressively
-    const newScale = Math.max(0.2, 1 - noClicks * 0.12);
-    noBtn.style.transform = `scale(${newScale})`;
-
-    // Move NO button away from YES button after 2nd click
-    if (noClicks >= 2) {
-        noBtn.style.position = "absolute";
+    noBtn.addEventListener("click", () => {
+        startMusic(); // Ensure music plays
+        noClicks++;
         
-        // Get positions of both buttons
-        const yesRect = yesBtn.getBoundingClientRect();
-        const questionRect = questionBox.getBoundingClientRect();
-        
-        // Calculate center of YES button relative to question box
-        const yesCenterX = yesRect.left + yesRect.width / 2 - questionRect.left;
-        const yesCenterY = yesRect.top + yesRect.height / 2 - questionRect.top;
-        
-        // Calculate distance and angle to move away from YES button
-        const angle = Math.random() * Math.PI * 2; // Random angle
-        const distance = 150 + (noClicks * 20); // Increase distance with each click
-        
-        // Calculate new position moving away from YES button
-        let newX = yesCenterX + Math.cos(angle) * distance;
-        let newY = yesCenterY + Math.sin(angle) * distance;
-        
-        // Keep button within bounds (with some padding)
-        const maxX = questionRect.width - 80;
-        const maxY = questionRect.height - 60;
-        
-        newX = Math.max(10, Math.min(newX, maxX));
-        newY = Math.max(10, Math.min(newY, maxY));
-        
-        noBtn.style.left = newX + "px";
-        noBtn.style.top = newY + "px";
-    }
+        // Show sad cat gif
+        sadGif.classList.remove("hidden");
+        sadGif.src = catMemeGifs[noClicks % catMemeGifs.length];
 
-    // Grow YES button significantly
-    yesBtn.style.transform = `scale(${1 + noClicks * 0.25})`;
+        // Show pleading text
+        if (noClicks <= pleadingMessages.length) {
+            pleadingText.textContent = pleadingMessages[noClicks - 1];
+        }
 
-    // Shake the screen
-    document.body.style.animation = "shake 0.5s";
-    setTimeout(() => {
-        document.body.style.animation = "";
-    }, 500);
+        // Shrink NO button more aggressively
+        const newScale = Math.max(0.2, 1 - noClicks * 0.12);
+        noBtn.style.transform = `scale(${newScale})`;
 
-    // Add more dramatic effects every 3 clicks
-    if (noClicks % 3 === 0) {
-        createSadEmojis();
-    }
+        // Move NO button away from YES button after 2nd click
+        if (noClicks >= 2) {
+            noBtn.style.position = "absolute";
+            
+            // Get positions of both buttons
+            const yesRect = yesBtn.getBoundingClientRect();
+            const questionRect = questionBox.getBoundingClientRect();
+            
+            // Calculate center of YES button relative to question box
+            const yesCenterX = yesRect.left + yesRect.width / 2 - questionRect.left;
+            const yesCenterY = yesRect.top + yesRect.height / 2 - questionRect.top;
+            
+            // Calculate distance and angle to move away from YES button
+            const angle = Math.random() * Math.PI * 2; // Random angle
+            const distance = 150 + (noClicks * 20); // Increase distance with each click
+            
+            // Calculate new position moving away from YES button
+            let newX = yesCenterX + Math.cos(angle) * distance;
+            let newY = yesCenterY + Math.sin(angle) * distance;
+            
+            // Keep button within bounds (with some padding)
+            const maxX = questionRect.width - 80;
+            const maxY = questionRect.height - 60;
+            
+            newX = Math.max(10, Math.min(newX, maxX));
+            newY = Math.max(10, Math.min(newY, maxY));
+            
+            noBtn.style.left = newX + "px";
+            noBtn.style.top = newY + "px";
+        }
 
-    // After 5 clicks, make YES button HUGE and irresistible
-    if (noClicks >= 5) {
-        yesBtn.style.fontSize = "24px";
-        yesBtn.style.padding = "25px 50px";
-        pleadingText.innerHTML = "PLEASE JUST CLICK YES! 😭😭😭<br>I CAN'T LIVE WITHOUT YOU!";
-    }
-});
+        // Grow YES button significantly
+        yesBtn.style.transform = `scale(${1 + noClicks * 0.25})`;
+
+        // Shake the screen
+        document.body.style.animation = "shake 0.5s";
+        setTimeout(() => {
+            document.body.style.animation = "";
+        }, 500);
+
+        // Add more dramatic effects every 3 clicks
+        if (noClicks % 3 === 0) {
+            createSadEmojis();
+        }
+
+        // After 5 clicks, make YES button HUGE and irresistible
+        if (noClicks >= 5) {
+            yesBtn.style.fontSize = "24px";
+            yesBtn.style.padding = "25px 50px";
+            pleadingText.innerHTML = "PLEASE JUST CLICK YES! 😭😭😭<br>I CAN'T LIVE WITHOUT YOU!";
+        }
+    });
 
     // Shake animation
     const style = document.createElement('style');
@@ -223,13 +234,13 @@ noBtn.addEventListener("click", () => {
 
     /* MEMORY SLIDESHOW ON YES PAGE */
     const memoryImages = [
-    { src: "assets/images/first.jpg", caption: "Our first date at the Skyranch 💕" },
-    { src: "assets/images/fav.jpg", caption: "My favorite picture of you 💕" },
-    { src: "assets/images/smile.jpg", caption: "Our first cake monthsary 🍽️" },
-    { src: "assets/images/miming.jpg", caption: "Our first miming together 🌅" },
-    { src: "assets/images/flower.jpg", caption: "My first flower pic of you 🤳" },
-    { src: "assets/images/christmas.jpg", caption: "Our Christmas together 🎄" }
-];
+        { src: "assets/images/first.jpg", caption: "Our first date at the Skyranch 💕" },
+        { src: "assets/images/fav.jpg", caption: "My favorite picture of you 💕" },
+        { src: "assets/images/smile.jpg", caption: "Our first cake monthsary 🍽️" },
+        { src: "assets/images/miming.jpg", caption: "Our first miming together 🌅" },
+        { src: "assets/images/flower.jpg", caption: "My first flower pic of you 🤳" },
+        { src: "assets/images/christmas.jpg", caption: "Our Christmas together 🎄" }
+    ];
 
     let currentMemory = 0;
     const memoryImage = document.getElementById("memoryImage");
