@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Valentine 💖</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<audio id="bgMusic" loop>
+    <source src="assets/music/Brooklyn Duo - A Thousand Years [WEDDING VERSION].mp3" type="audio/mpeg">
+</audio>
+
+<canvas id="fireworks"></canvas>
+
+<!-- MAIN PAGE -->
+<div class="container" id="mainPage">
+
+    <h1>💖 Happy Valentine's Day 💖</h1>
+
+    <div id="countdown"></div>
+
+    <div class="slideshow">
+        <img title="Our memories" id="slideImage" src="assets/images/us1.jpg" alt="Us">
+    </div>
+
+    <button id="openBtn">Open My Valentine 🎁</button>
+
+    <div class="question hidden" id="questionBox">
+        <h2>Will you be my Valentine? 💘</h2>
+        <p id="pleadingText"></p>
+        <div class="buttons">
+            <button id="yesBtn" class="yes">YES 💖</button>
+            <button id="noBtn" class="no">NO 😢</button>
+        </div>
+        <img title="sad cat" id="sadGif" class="hidden" src="https://media.giphy.com/media/6uGhT1O4sxpi8/giphy.gif" alt="Sad reaction">
+    </div>
+
+</div>
+
+<!-- YES PAGE (HIDDEN BY DEFAULT) -->
+<div class="yes-page hidden" id="yesPage">
+    <div class="celebration-header">
+        <h1 class="celebrate-title">🎉 SHE SAID YES! 🎉</h1>
+        <p class="celebrate-subtitle">I'm the luckiest person alive! 💖</p>
+         <img src="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExcmE3Y2VzMGE2Y2g0NWZvMTFoZWtoNG1yamU0N3A0cDVvNjBuM3ZuOSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/wvYNSqBAMDVx8CEYkt/giphy.gif" alt="Happy cat" class="happy-cat-gif">
+    </div>
+
+    <div class="plans-section">
+        <h2>Our Valentine's Date Plans 💕</h2>
+        <div class="plans-grid">
+            <div class="plan-card">
+                <div class="plan-icon">🍽️</div>
+                <h3>Romantic Dinner</h3>
+                <p>Your favorite restaurant or new restaurant you want to try, and all your favorite food! 🕯️</p>
+            </div>
+            <div class="plan-card">
+                <div class="plan-icon">🎬</div>
+                <h3>Movie Date</h3>
+                <p>Select your favorite movies for us to watch on cinema with popcorn! 🍿</p>
+            </div>
+            <div class="plan-card">
+                <div class="plan-icon">🌅</div>
+                <h3>Sunset Walk</h3>
+                <p>Beautiful sunset stroll, just you and me 🌇</p>
+            </div>
+            <div class="plan-card">
+                <div class="plan-icon">🎁</div>
+                <h3>Special Surprise</h3>
+                <p>A gift I made just for you... 👀✨</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="memories-section">
+        <h2>Our Beautiful Memories 📸</h2>
+        <div class="memory-slideshow">
+            <button class="nav-btn prev" id="prevBtn">❮</button>
+            <div class="memory-container">
+                <img id="memoryImage" src="assets/images/first.jpg" alt="Our memory">
+                <p id="memoryCaption" class="memory-caption">Our first date 💕</p>
+            </div>
+            <button class="nav-btn next" id="nextBtn">❯</button>
+        </div>
+        <div class="dots-container" id="dotsContainer"></div>
+    </div>
+
+    <div class="love-letter">
+        <h2>A Message From My Heart 💌</h2>
+        <div class="letter-content">
+            <p>My dearest love,</p>
+            <p>Every moment with you feels like a dream come true. You make my world brighter, my days happier, and my life complete. 🌟</p>
+            <p>Thank you for being you - for your beautiful smile, your kind heart, and for choosing to be with me. I can't wait to create more amazing memories together! 💖</p>
+            <p>I love you more than words can say! 🐱✨</p>
+            <p class="signature">Forever yours,<br>Your Love 💕</p>
+        </div>
+    </div>
+
+    <button class="back-btn" id="backBtn">← Back to Main Page</button>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
