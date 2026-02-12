@@ -94,6 +94,33 @@ document.addEventListener("DOMContentLoaded", () => {
     document.body.addEventListener('touchstart', startMusic);
     openBtn.addEventListener('click', startMusic);
 
+    /* MUSIC TOGGLE BUTTON */
+    const musicToggle = document.getElementById("musicToggle");
+
+    musicToggle.addEventListener("click", () => {
+        if (bgMusic.paused) {
+            bgMusic.play();
+            musicToggle.textContent = "🔊 Music ON";
+            musicToggle.style.background = "#4CAF50";
+            musicStarted = true;
+        } else {
+            bgMusic.pause();
+            musicToggle.textContent = "🔇 Music OFF";
+            musicToggle.style.background = "#ff69b4";
+        }
+    });
+
+    // Update button when music plays/pauses
+    bgMusic.addEventListener('play', () => {
+        musicToggle.textContent = "🔊 Music ON";
+        musicToggle.style.background = "#4CAF50";
+    });
+
+    bgMusic.addEventListener('pause', () => {
+        musicToggle.textContent = "🔇 Music OFF";
+        musicToggle.style.background = "#ff69b4";
+    });
+
     /* OPEN BUTTON */
     openBtn.addEventListener("click", () => {
         questionBox.classList.remove("hidden");
@@ -121,12 +148,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
     /* NO BUTTON - Enhanced interactions with cat memes */
     const catMemeGifs = [
-        "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExbnJoYnNqdTR3MXd0eGltOHhjOHNjY3R6Z2RiczJmMjJkeGdpYTBjNSZlcD12MV9naWZzX3NlYXJjaCZjdD1n/fFa05KbZowXiEIyRse/giphy.gif", // Sad cat
-        "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExbnJoYnNqdTR3MXd0eGltOHhjOHNjY3R6Z2RiczJmMjJkeGdpYTBjNSZlcD12MV9naWZzX3NlYXJjaCZjdD1n/7AzEXdIb1wyCTWJntb/giphy.gif", // Crying cat
-        "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExbnJoYnNqdTR3MXd0eGltOHhjOHNjY3R6Z2RiczJmMjJkeGdpYTBjNSZlcD12MV9naWZzX3NlYXJjaCZjdD1n/TZBED1pP5m8N2/giphy.gif", // Dramatic cat
-        "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExbnJoYnNqdTR3MXd0eGltOHhjOHNjY3R6Z2RiczJmMjJkeGdpYTBjNSZlcD12MV9naWZzX3NlYXJjaCZjdD1n/ruyS8Zw9sBqE5UjOnY/giphy.gif", // Sad kitty
-        "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExbnJoYnNqdTR3MXd0eGltOHhjOHNjY3R6Z2RiczJmMjJkeGdpYTBjNSZlcD12MV9naWZzX3NlYXJjaCZjdD1n/mi4ec226vjAkehSLk0/giphy.gif", // Pleading cat
-        "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExZHQweDU5ZjZseGljYzJpd3h6Z2thMjgxZTBmenUxdjJsem83cXU1cSZlcD12MV9naWZzX3NlYXJjaCZjdD1n/901mxGLGQN2PyCQpoc/giphy.gif", // Heartbroken cat
+        "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExbnJoYnNqdTR3MXd0eGltOHhjOHNjY3R6Z2RiczJmMjJkeGdpYTBjNSZlcD12MV9naWZzX3NlYXJjaCZjdD1n/fFa05KbZowXiEIyRse/giphy.gif",
+        "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExbnJoYnNqdTR3MXd0eGltOHhjOHNjY3R6Z2RiczJmMjJkeGdpYTBjNSZlcD12MV9naWZzX3NlYXJjaCZjdD1n/7AzEXdIb1wyCTWJntb/giphy.gif",
+        "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExbnJoYnNqdTR3MXd0eGltOHhjOHNjY3R6Z2RiczJmMjJkeGdpYTBjNSZlcD12MV9naWZzX3NlYXJjaCZjdD1n/TZBED1pP5m8N2/giphy.gif",
+        "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExbnJoYnNqdTR3MXd0eGltOHhjOHNjY3R6Z2RiczJmMjJkeGdpYTBjNSZlcD12MV9naWZzX3NlYXJjaCZjdD1n/ruyS8Zw9sBqE5UjOnY/giphy.gif",
+        "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExbnJoYnNqdTR3MXd0eGltOHhjOHNjY3R6Z2RiczJmMjJkeGdpYTBjNSZlcD12MV9naWZzX3NlYXJjaCZjdD1n/mi4ec226vjAkehSLk0/giphy.gif",
+        "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExZHQweDU5ZjZseGljYzJpd3h6Z2thMjgxZTBmenUxdjJsem83cXU1cSZlcD12MV9naWZzX3NlYXJjaCZjdD1n/901mxGLGQN2PyCQpoc/giphy.gif",
     ];
 
     const pleadingMessages = [
